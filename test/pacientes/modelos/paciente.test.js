@@ -7,7 +7,7 @@ const modeloPaciente = require('../../../src/pacientes/modelo/models.js')
 const { crearApi } = require('../../../src/factories/apiFactoryMaster.js')
 const { crearDao } = require('../../../src/factories/daoFactoryMaster.js')
 
-describe('TESTS para crearPaciente y PacientesApi', () => {
+describe('TESTSs para crearPaciente y PacientesApi', () => {
 
     describe('PRUEBA MÚLTIPLE: se envía paciente sin algún campo requerido', () => {
         it('no lo agrega y se recibe error de acuerdo al campo faltante', () => {
