@@ -23,7 +23,7 @@ function crearPaciente(objeto) {
     }
 
     if (isNaN(parseInt(objeto.edad))) {
-        throw crearErrorArgumentosInvalidos('nombre', 'debe ser un entero')
+        throw crearErrorArgumentosInvalidos('edad', 'debe ser un entero')
     } else {
         paciente.edad = objeto.edad
     }

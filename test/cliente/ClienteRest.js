@@ -32,8 +32,8 @@ function crearClienteRest(port, recurso) {
         post: async (modelo) => {
             return await sendRequest({ url: makeUrl(port, recurso), method: 'post', data: modelo })
         },
-        put: async (modelo) => {
-            return await sendRequest({ url: makeUrl(port, recurso) + `/${modelo.id}`, method: 'put', data: modelo })
+        put: async (modelo, id) => {
+            return await sendRequest({ url: makeUrl(port, recurso) + `/${id}`, method: 'put', data: modelo })
         },
         getByAge: async ({ desde, hasta }) => {
             return await sendRequest({ url: makeUrl(port, recurso), params: { desde, hasta } })

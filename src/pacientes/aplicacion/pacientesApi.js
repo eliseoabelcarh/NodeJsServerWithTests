@@ -7,7 +7,7 @@ async function crearPacientesApi(pacientesDao) {
         type: 'pacientes',
 
         getByDni: async (dato) => {
-            const dniValido = crearDniValido(dato)
+            const dniValido = esDniValido(dato)
             const pacientes = await pacientesDao.getByDni(dniValido)
             return pacientes
         },
@@ -33,7 +33,7 @@ async function crearPacientesApi(pacientesDao) {
         },
         replaceById: async (datos, unId) => {
             if (!datos.id || !unId || datos.id != unId) {
-                throw crearErrorArgumentosInvalidos('no coinciden los ids')
+                throw crearErrorArgumentosInvalidos('Id', 'no coinciden los ids')
             }
             const paciente = crearPaciente(datos)
             await pacientesDao.updateById(paciente)
@@ -42,9 +42,9 @@ async function crearPacientesApi(pacientesDao) {
     }
 }
 
-function crearDniValido(dato) {
+function esDniValido(dato) {
     if (isNaN(dato)) {
-        throw crearErrorArgumentosInvalidos('el dni del paciente debe ser numerico')
+        throw crearErrorArgumentosInvalidos('dni', 'el dni del paciente debe ser numerico')
     }
     return dato
 }
@@ -56,7 +56,7 @@ function crearRangoValido(obj) {
     }
 
     if (isNaN(rango.desde) || isNaN(rango.hasta)) {
-        throw crearErrorArgumentosInvalidos('el rango de edades debe ser numerico')
+        throw crearErrorArgumentosInvalidos('getByAge', 'el rango de edades debe ser numerico')
     }
 
     return rango

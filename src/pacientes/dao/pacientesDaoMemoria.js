@@ -8,10 +8,10 @@ async function crearPacientesDaoMemoria() {
 
     const elementos = []
 
-    return {
-        add: async (elemento) => {
-            elementos.push(elemento)
-        },
+    const daoMemoria = {
+        /*   add: async () => {
+              elementos.push(elemento)
+          }, */
         addUnique: async (elemento, claveUnica) => {
             const existe = elementos.some(e => {
                 return e[claveUnica] === elemento[claveUnica]
@@ -21,9 +21,9 @@ async function crearPacientesDaoMemoria() {
             }
             elementos.push(elemento)
         },
-        addAll: async (elementosNuevos) => {
+        /* addAll: async (elementosNuevos) => {
             elementosNuevos.forEach(e => elementos.push(e))
-        },
+        }, */
         getAll: async () => {
             return [...elementos]
         },
@@ -54,6 +54,7 @@ async function crearPacientesDaoMemoria() {
         },
         close: async () => { }
     }
+    return daoMemoria
 }
 
 module.exports = { crearPacientesDaoMemoria }

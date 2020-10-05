@@ -21,7 +21,6 @@ function createServer({ port = 0, aplicacion }) {
             })
             .once('listening', () => {
                 server.port = server.address().port
-                console.log('servidor listo y escuchando.....')
                 resolve(server)
             })
     })
@@ -37,10 +36,8 @@ function crearRouterFactory(aplicacion) {
 
     const type = aplicacion.type
 
-    if (type) {
+    if (type !== null) {
         return routersFactory[type]
-    } else {
-        console.log('no existe router para esa aplicación')
     }
 
 }
