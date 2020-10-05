@@ -9,9 +9,9 @@ async function crearPacientesDaoMemoria() {
     const elementos = []
 
     const daoMemoria = {
-        /*   add: async () => {
-              elementos.push(elemento)
-          }, */
+        add: async (elemento) => {
+            elementos.push(elemento)
+        },
         addUnique: async (elemento, claveUnica) => {
             const existe = elementos.some(e => {
                 return e[claveUnica] === elemento[claveUnica]
@@ -21,9 +21,9 @@ async function crearPacientesDaoMemoria() {
             }
             elementos.push(elemento)
         },
-        /* addAll: async (elementosNuevos) => {
+        addAll: async (elementosNuevos) => {
             elementosNuevos.forEach(e => elementos.push(e))
-        }, */
+        },
         getAll: async () => {
             return [...elementos]
         },

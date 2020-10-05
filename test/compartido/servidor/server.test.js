@@ -217,7 +217,8 @@ describe('servidor', () => {
                         modeloPaciente.sinCampoEdad,
                         modeloPaciente.sinCampoDni,
                         modeloPaciente.conDniNoNumerico,
-                        modeloPaciente.conEdadNoNumerico
+                        modeloPaciente.conEdadNoNumerico,
+                        modeloPaciente.sinCampoApellido
                     ]
 
                     async function test(pacienteSinCampoX) {
@@ -235,14 +236,12 @@ describe('servidor', () => {
                         await test(element)
                     }
 
-
                 })
             })
 
 
             describe('some', () => {
                 it('some', async () => {
-
                     const erroresARecibir = [
                         'dni: el dni del paciente debe ser numerico',
                         'getByAge: el rango de edades debe ser numerico',
@@ -265,22 +264,15 @@ describe('servidor', () => {
                         }, (error) => {
                             assert.strictEqual(error.status, 400)
                             erroresARecibir.should.matchAny(error.message)
-                            console.log(error.message)
                             return true
                         })
                     }
-
 
                     for (let i = 0; i < metodos.length; i++) {
                         const metodo = metodos[i];
                         const campoErroneo = camposErroneos[i]
                         await test(metodo, campoErroneo)
                     }
-
-
-
-
-
                 })
             })
 
